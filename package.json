@@ -1,6 +1,6 @@
 {
   "name": "openepi-client",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "A JavaScript client for the openepi data",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
