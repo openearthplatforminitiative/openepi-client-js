@@ -4,11 +4,9 @@ import createClient from "openapi-fetch";
 export default class SoilClient {
   constructor(
     private readonly baseUrl: string = "https://api-test.openepi.io/soil",
-  ) { }
+  ) {}
 
-  async getSoilType(
-    query: paths["/type"]["get"]["parameters"]["query"],
-  ) {
+  async getSoilType(query: paths["/type"]["get"]["parameters"]["query"]) {
     const { GET } = createClient<paths>({ baseUrl: this.baseUrl });
     return GET("/type", { params: { query } });
   }

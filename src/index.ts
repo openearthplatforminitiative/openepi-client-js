@@ -4,4 +4,10 @@ import FloodClient from "./flood";
 import DeforestationClient from "./deforestation";
 import SoilClient from "./soil";
 
-export { GeocoderClient, WeatherClient, FloodClient, DeforestationClient, SoilClient };
+export {
+  GeocoderClient,
+  WeatherClient,
+  FloodClient,
+  DeforestationClient,
+  SoilClient,
+};

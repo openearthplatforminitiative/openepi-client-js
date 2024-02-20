@@ -81,7 +81,7 @@ import { SoilClient } from "openepi-client";
 
 const client = new SoilClient();
 
-client.getSoilType({ lon: 9.58, lat: 60.10 }).then((result) => {
+client.getSoilType({ lon: 9.58, lat: 60.1 }).then((result) => {
   const { data, error } = result;
   if (error) {
     console.error(error);
