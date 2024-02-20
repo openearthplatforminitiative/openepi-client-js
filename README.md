@@ -74,6 +74,23 @@ client.getBasin({ lon: 30.0619, lat: -1.9441 }).then((result) => {
 });
 ```
 
+### Soil API
+
+```javascript
+import { SoilClient } from "openepi-client";
+
+const client = new SoilClient();
+
+client.getSoilType({ lon: 9.58, lat: 60.10 }).then((result) => {
+  const { data, error } = result;
+  if (error) {
+    console.error(error);
+  } else {
+    console.log(data);
+  }
+});
+```
+
 ### Using custom base URL
 
 ```javascript
