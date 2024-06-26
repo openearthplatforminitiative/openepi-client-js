@@ -1,29 +1,29 @@
-import type { paths } from "../generated/flood";
-import createClient from "openapi-fetch";
+import type { paths } from '../generated/flood';
+import createClient from 'openapi-fetch';
 
 export default class FloodClient {
   constructor(
-    private readonly baseUrl: string = "https://api-test.openepi.io/flood",
+    private readonly baseUrl: string = 'https://api-test.openepi.io/flood'
   ) {}
 
   async getSummaryForecast(
-    query: paths["/summary"]["get"]["parameters"]["query"],
+    query: paths['/summary']['get']['parameters']['query']
   ) {
     const { GET } = createClient<paths>({ baseUrl: this.baseUrl });
-    return GET("/summary", { params: { query } });
+    return GET('/summary', { params: { query } });
   }
 
   async getDetailedForecast(
-    query: paths["/detailed"]["get"]["parameters"]["query"],
+    query: paths['/detailed']['get']['parameters']['query']
   ) {
     const { GET } = createClient<paths>({ baseUrl: this.baseUrl });
-    return GET("/detailed", { params: { query } });
+    return GET('/detailed', { params: { query } });
   }
 
   async getThresholds(
-    query: paths["/threshold"]["get"]["parameters"]["query"],
+    query: paths['/threshold']['get']['parameters']['query']
   ) {
     const { GET } = createClient<paths>({ baseUrl: this.baseUrl });
-    return GET("/threshold", { params: { query } });
+    return GET('/threshold', { params: { query } });
   }
 }
