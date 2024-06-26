@@ -2,6 +2,12 @@
 
 JavaScript-clients with type declarations for accessing OpenEPI data and services.
 
+## Generating types
+You can generate types from open-api by running:
+```
+npm run generate-types
+```
+
 ## Examples
 
 ### Geocoding
