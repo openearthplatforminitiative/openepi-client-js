@@ -5,7 +5,6 @@ openapi-typescript https://api-test.openepi.io/flood/openapi.json --output gener
 openapi-typescript https://api-test.openepi.io/deforestation/openapi.json --output generated/deforestation.ts
 openapi-typescript https://api-test.openepi.io/soil/openapi.json --output generated/soil.ts
 openapi-typescript https://api-test.openepi.io/crop-health/openapi.json --output generated/crop_health.ts
-# sed -i "s/'\*\/\*': string;/'\*\/\*': Buffer;/g" ./generated/crop_health.ts
 
 # Replace '"*/*": string;' with '"*/*": Buffer;'"
 if [ "$(uname)" = "Darwin" ]; then
