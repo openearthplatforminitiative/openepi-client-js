@@ -1,19 +1,6 @@
 import type { components, paths } from "../generated/crop_health";
 import createClient, { Middleware } from "openapi-fetch";
 
-
-const myMiddleware: Middleware = {
-  async onRequest({ request, options }) {
-    console.log(request.headers)
-    return request;
-  },
-  async onResponse({ request, response, options }) {
-    const { body, ...resOptions } = response;
-    // change status of response
-    return new Response(body, { ...resOptions, status: 200 });
-  },
-};
-
 export default class CropHealthClient {
   constructor(
     private readonly baseUrl: string = "https://api-test.openepi.io/crop-health"
@@ -28,7 +15,6 @@ export default class CropHealthClient {
     image: Buffer
   ) {
     const client = createClient<paths>({ baseUrl: this.baseUrl });
-    client.use(myMiddleware)
     const { POST } = client
 
     return POST("/predictions/binary", {
