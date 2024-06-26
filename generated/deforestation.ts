@@ -3,229 +3,284 @@
  * Do not make direct changes to the file.
  */
 
-
 export interface paths {
-  "/basin": {
-    /**
-     * Get yearly forest cover loss within a river basin
-     * @description Returns the estimated deforested area per year within a river basin for the given location. To retrieve data for a single point both `lon` and `lon` must be included in the request. To retrieve data within a bounding box all of `min_lon`, `min_lat`, `max_lon`, `max_lat` must be included in the request.
-     */
-    get: operations["lossyear_basin_get"];
-  };
-  "/ready": {
-    /**
-     * Check if this service is ready to receive requests
-     * @description Returns a message describing the status of this service
-     */
-    get: operations["ready_ready_get"];
-  };
-  "/health": {
-    /**
-     * Check if this service is alive
-     * @description Returns a simple message to indicate that this service is alive
-     */
-    get: operations["liveness_health_get"];
-  };
+    "/basin": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get yearly forest cover loss within a river basin
+         * @description Returns the estimated deforested area per year within a river basin for the given location. To retrieve data for a single point both `lon` and `lon` must be included in the request. To retrieve data within a bounding box all of `min_lon`, `min_lat`, `max_lon`, `max_lat` must be included in the request.
+         */
+        get: operations["lossyear_basin_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/ready": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Check if this service is ready to receive requests
+         * @description Returns a message describing the status of this service
+         */
+        get: operations["ready_ready_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/health": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Check if this service is alive
+         * @description Returns a simple message to indicate that this service is alive
+         */
+        get: operations["liveness_health_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
-
 export type webhooks = Record<string, never>;
-
 export interface components {
-  schemas: {
-    /** BasinProperties */
-    BasinProperties: {
-      /**
-       * Downstream Id
-       * @description Id of the next downstream polygon for the current basin polygon. The value 0 means that there is no downstream connection.
-       */
-      downstream_id: number;
-      /**
-       * Basin Area
-       * @description Area of the basin polygon in square kilometers.
-       */
-      basin_area: number;
-      /**
-       * Upstream Area
-       * @description Total upstream area in square kilometers, including the current polygon.
-       */
-      upstream_area: number;
-      /** Start Year */
-      start_year: number;
-      /** End Year */
-      end_year: number;
-      /**
-       * Daterange Tot Treeloss
-       * @description Total tree cover loss, in square kilometers, within the basin polygon over the time period from start_year to end_year (inclusive)
-       */
-      daterange_tot_treeloss: number;
-      /**
-       * Daterange Rel Treeloss
-       * @description Tree cover loss within the basin polygon relative to the total area of the polygon, over the time period from start_year to end_year (inclusive). Equivalent to `daterange_tot_treeloss / basin_area`.
-       */
-      daterange_rel_treeloss: number;
-      /** Treeloss Per Year */
-      treeloss_per_year: components["schemas"]["LossYear"][];
+    schemas: {
+        /** BasinProperties */
+        BasinProperties: {
+            /**
+             * Downstream Id
+             * @description Id of the next downstream polygon for the current basin polygon. The value 0 means that there is no downstream connection.
+             */
+            downstream_id: number;
+            /**
+             * Basin Area
+             * @description Area of the basin polygon in square kilometers.
+             */
+            basin_area: number;
+            /**
+             * Upstream Area
+             * @description Total upstream area in square kilometers, including the current polygon.
+             */
+            upstream_area: number;
+            /** Start Year */
+            start_year: number;
+            /** End Year */
+            end_year: number;
+            /**
+             * Daterange Tot Treeloss
+             * @description Total tree cover loss, in square kilometers, within the basin polygon over the time period from start_year to end_year (inclusive)
+             */
+            daterange_tot_treeloss: number;
+            /**
+             * Daterange Rel Treeloss
+             * @description Tree cover loss within the basin polygon relative to the total area of the polygon, over the time period from start_year to end_year (inclusive). Equivalent to `daterange_tot_treeloss / basin_area`.
+             */
+            daterange_rel_treeloss: number;
+            /** Treeloss Per Year */
+            treeloss_per_year: components["schemas"]["LossYear"][];
+        };
+        /** DeforestationBasinFeature */
+        DeforestationBasinFeature: {
+            /**
+             * Id
+             * @description Unique basin polygon identifier.
+             */
+            id: number;
+            /**
+             * Type
+             * @constant
+             */
+            type: "Feature";
+            properties: components["schemas"]["BasinProperties"];
+            /** Geometry */
+            geometry: components["schemas"]["Polygon"] | components["schemas"]["MultiPolygon"];
+        };
+        /** DeforestationBasinGeoJSON */
+        DeforestationBasinGeoJSON: {
+            /**
+             * Type
+             * @constant
+             */
+            type: "FeatureCollection";
+            /** Features */
+            features: components["schemas"]["DeforestationBasinFeature"][];
+        };
+        /** HTTPValidationError */
+        HTTPValidationError: {
+            /** Detail */
+            detail?: components["schemas"]["ValidationError"][];
+        };
+        /** LossYear */
+        LossYear: {
+            /**
+             * Year
+             * @description Year when the loss was detected.
+             */
+            year: number;
+            /**
+             * Area
+             * @description Total tree cover loss within the basin polygon, in square kilometers.
+             */
+            area: number;
+            /**
+             * Relative Area
+             * @description Tree cover loss within the basin polygon relative to the total area of the polygon.
+             */
+            relative_area: number;
+        };
+        /** MultiPolygon */
+        MultiPolygon: {
+            /**
+             * Type
+             * @constant
+             */
+            type: "MultiPolygon";
+            /** Coordinates */
+            coordinates: [
+                number,
+                number
+            ][][][];
+        };
+        /** Polygon */
+        Polygon: {
+            /**
+             * Type
+             * @constant
+             */
+            type: "Polygon";
+            /** Coordinates */
+            coordinates: [
+                number,
+                number
+            ][][];
+        };
+        /** ValidationError */
+        ValidationError: {
+            /** Location */
+            loc: (string | number)[];
+            /** Message */
+            msg: string;
+            /** Error Type */
+            type: string;
+        };
     };
-    /** DeforestationBasinFeature */
-    DeforestationBasinFeature: {
-      /**
-       * Id
-       * @description Unique basin polygon identifier.
-       */
-      id: number;
-      /**
-       * Type
-       * @constant
-       */
-      type: "Feature";
-      properties: components["schemas"]["BasinProperties"];
-      /** Geometry */
-      geometry: components["schemas"]["Polygon"] | components["schemas"]["MultiPolygon"];
-    };
-    /** DeforestationBasinGeoJSON */
-    DeforestationBasinGeoJSON: {
-      /**
-       * Type
-       * @constant
-       */
-      type: "FeatureCollection";
-      /** Features */
-      features: components["schemas"]["DeforestationBasinFeature"][];
-    };
-    /** HTTPValidationError */
-    HTTPValidationError: {
-      /** Detail */
-      detail?: components["schemas"]["ValidationError"][];
-    };
-    /** LossYear */
-    LossYear: {
-      /**
-       * Year
-       * @description Year when the loss was detected.
-       */
-      year: number;
-      /**
-       * Area
-       * @description Total tree cover loss within the basin polygon, in square kilometers.
-       */
-      area: number;
-      /**
-       * Relative Area
-       * @description Tree cover loss within the basin polygon relative to the total area of the polygon.
-       */
-      relative_area: number;
-    };
-    /** MultiPolygon */
-    MultiPolygon: {
-      /**
-       * Type
-       * @constant
-       */
-      type: "MultiPolygon";
-      /** Coordinates */
-      coordinates: [number, number][][][];
-    };
-    /** Polygon */
-    Polygon: {
-      /**
-       * Type
-       * @constant
-       */
-      type: "Polygon";
-      /** Coordinates */
-      coordinates: [number, number][][];
-    };
-    /** ValidationError */
-    ValidationError: {
-      /** Location */
-      loc: (string | number)[];
-      /** Message */
-      msg: string;
-      /** Error Type */
-      type: string;
-    };
-  };
-  responses: never;
-  parameters: never;
-  requestBodies: never;
-  headers: never;
-  pathItems: never;
+    responses: never;
+    parameters: never;
+    requestBodies: never;
+    headers: never;
+    pathItems: never;
 }
-
 export type $defs = Record<string, never>;
-
-export type external = Record<string, never>;
-
 export interface operations {
-
-  /**
-   * Get yearly forest cover loss within a river basin
-   * @description Returns the estimated deforested area per year within a river basin for the given location. To retrieve data for a single point both `lon` and `lon` must be included in the request. To retrieve data within a bounding box all of `min_lon`, `min_lat`, `max_lon`, `max_lat` must be included in the request.
-   */
-  lossyear_basin_get: {
-    parameters: {
-      query?: {
-        /** @description Longitude of the point to retrieve data for. */
-        lon?: number | null;
-        /** @description Latitude of the point to retrieve data for. */
-        lat?: number | null;
-        /** @description Minimum longitude of the bounding box to retrieve data for. */
-        min_lon?: number | null;
-        /** @description Minimum latitude of the bounding box to retrieve data for. */
-        min_lat?: number | null;
-        /** @description Maximum longitude of the bounding box to retrieve data for. */
-        max_lon?: number | null;
-        /** @description Maximum latitude of the bounding box to retrieve data for. */
-        max_lat?: number | null;
-        /** @description First year in the date range to return data for. */
-        start_year?: number;
-        /** @description Last year in the data range to return data for. */
-        end_year?: number;
-      };
-    };
-    responses: {
-      /** @description Successful Response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["DeforestationBasinGeoJSON"];
+    lossyear_basin_get: {
+        parameters: {
+            query?: {
+                /** @description Longitude of the point to retrieve data for. */
+                lon?: number | null;
+                /** @description Latitude of the point to retrieve data for. */
+                lat?: number | null;
+                /** @description Minimum longitude of the bounding box to retrieve data for. */
+                min_lon?: number | null;
+                /** @description Minimum latitude of the bounding box to retrieve data for. */
+                min_lat?: number | null;
+                /** @description Maximum longitude of the bounding box to retrieve data for. */
+                max_lon?: number | null;
+                /** @description Maximum latitude of the bounding box to retrieve data for. */
+                max_lat?: number | null;
+                /** @description First year in the date range to return data for. */
+                start_year?: number;
+                /** @description Last year in the data range to return data for. */
+                end_year?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
         };
-      };
-      /** @description Validation Error */
-      422: {
-        content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DeforestationBasinGeoJSON"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
         };
-      };
     };
-  };
-  /**
-   * Check if this service is ready to receive requests
-   * @description Returns a message describing the status of this service
-   */
-  ready_ready_get: {
-    responses: {
-      /** @description Successful Response */
-      200: {
-        content: {
-          "application/json": unknown;
+    ready_ready_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
         };
-      };
-    };
-  };
-  /**
-   * Check if this service is alive
-   * @description Returns a simple message to indicate that this service is alive
-   */
-  liveness_health_get: {
-    responses: {
-      /** @description Successful Response */
-      200: {
-        content: {
-          "application/json": {
-            [key: string]: string;
-          };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
         };
-      };
     };
-  };
+    liveness_health_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: string | undefined;
+                    };
+                };
+            };
+        };
+    };
 }

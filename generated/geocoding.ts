@@ -3,300 +3,397 @@
  * Do not make direct changes to the file.
  */
 
-
 export interface paths {
-  "/": {
-    /**
-     * Geocoding
-     * @description Returns a GeoJSON FeatureCollection of places matching the search query
-     */
-    get: operations["geocoding__get"];
-  };
-  "/reverse": {
-    /**
-     * Reverse Geocoding
-     * @description Returns a GeoJSON FeatureCollection of places near the provided coordinate
-     */
-    get: operations["reverse_geocoding_reverse_get"];
-  };
-  "/ready": {
-    /** Readiness */
-    get: operations["readiness_ready_get"];
-  };
-  "/health": {
-    /** Liveness */
-    get: operations["liveness_health_get"];
-  };
+    "/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Geocoding
+         * @description Returns a GeoJSON FeatureCollection of places matching the search query
+         */
+        get: operations["geocoding__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/reverse": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Reverse Geocoding
+         * @description Returns a GeoJSON FeatureCollection of places near the provided coordinate
+         */
+        get: operations["reverse_geocoding_reverse_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/ready": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Readiness */
+        get: operations["readiness_ready_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/health": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Liveness */
+        get: operations["liveness_health_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
-
 export type webhooks = Record<string, never>;
-
 export interface components {
-  schemas: {
-    /** Feature */
-    Feature: {
-      /**
-       * Type
-       * @constant
-       */
-      type: "Feature";
-      /** Geometry */
-      geometry: components["schemas"]["Point"] | components["schemas"]["MultiPoint"] | components["schemas"]["LineString"] | components["schemas"]["MultiLineString"] | components["schemas"]["Polygon"] | components["schemas"]["MultiPolygon"];
-      properties: components["schemas"]["Properties"];
+    schemas: {
+        /** Feature */
+        Feature: {
+            /**
+             * Type
+             * @constant
+             */
+            type: "Feature";
+            /** Geometry */
+            geometry: components["schemas"]["Point"] | components["schemas"]["MultiPoint"] | components["schemas"]["LineString"] | components["schemas"]["MultiLineString"] | components["schemas"]["Polygon"] | components["schemas"]["MultiPolygon"];
+            properties: components["schemas"]["Properties"];
+        };
+        /** FeatureCollection */
+        FeatureCollection: {
+            /**
+             * Type
+             * @constant
+             */
+            type: "FeatureCollection";
+            /** Features */
+            features: components["schemas"]["Feature"][];
+        };
+        /** HTTPValidationError */
+        HTTPValidationError: {
+            /** Detail */
+            detail?: components["schemas"]["ValidationError"][];
+        };
+        /** LineString */
+        LineString: {
+            /**
+             * Type
+             * @constant
+             */
+            type: "LineString";
+            /** Coordinates */
+            coordinates: [
+                number,
+                number
+            ][];
+        };
+        /** MultiLineString */
+        MultiLineString: {
+            /**
+             * Type
+             * @constant
+             */
+            type: "MultiLineString";
+            /** Coordinates */
+            coordinates: [
+                number,
+                number
+            ][][];
+        };
+        /** MultiPoint */
+        MultiPoint: {
+            /**
+             * Type
+             * @constant
+             */
+            type: "MultiPoint";
+            /** Coordinates */
+            coordinates: [
+                number,
+                number
+            ][];
+        };
+        /** MultiPolygon */
+        MultiPolygon: {
+            /**
+             * Type
+             * @constant
+             */
+            type: "MultiPolygon";
+            /** Coordinates */
+            coordinates: [
+                number,
+                number
+            ][][][];
+        };
+        /** Point */
+        Point: {
+            /**
+             * Type
+             * @constant
+             */
+            type: "Point";
+            /**
+             * Coordinates
+             * @description Coordinates in the format (lon, lat)
+             */
+            coordinates: [
+                number,
+                number
+            ];
+        };
+        /** Polygon */
+        Polygon: {
+            /**
+             * Type
+             * @constant
+             */
+            type: "Polygon";
+            /** Coordinates */
+            coordinates: [
+                number,
+                number
+            ][][];
+        };
+        /** Properties */
+        Properties: {
+            /**
+             * Name
+             * @description Name of the OSM-object
+             */
+            name?: string | null;
+            /**
+             * Osm Type
+             * @description Whether the OSM object is an OSM node (N), way (W), or relation (R)
+             */
+            osm_type: "N" | "W" | "R";
+            /**
+             * Osm Id
+             * @description An ID uniquely identifies the OSM-object within the OSM-type
+             */
+            osm_id: number;
+            /**
+             * Type
+             * @description The type of the place (e.g. house, street, city, country)
+             */
+            type?: "house" | "street" | "locality" | "district" | "city" | "county" | "state" | "country" | null;
+            /**
+             * Country
+             * @description Name of the country that the OSM-object is in
+             */
+            country?: string | null;
+            /**
+             * County
+             * @description Name of the county that the OSM-object is in
+             */
+            county?: string | null;
+            /**
+             * City
+             * @description Name of the city that the OSM-object is in
+             */
+            city?: string | null;
+            /**
+             * Countrycode
+             * @description Country code for the country that the OSM-object is in
+             */
+            countrycode?: string | null;
+            /**
+             * Osm Key
+             * @description Key of the main tag of the OSM object (e.g. boundary, highway, amenity)
+             */
+            osm_key?: string | null;
+            /**
+             * Osm Value
+             * @description Value of the main tag of the OSM object (e.g. residential, restaurant)
+             */
+            osm_value?: string | null;
+            /**
+             * Postcode
+             * @description Postal code of the OSM-object
+             */
+            postcode?: string | null;
+            /**
+             * Extent
+             * @description The bounding box formatted as (min latitude, max latitude, min longitude, max longitude)
+             */
+            extent?: [
+                number,
+                number,
+                number,
+                number
+            ] | null;
+            [key: string]: unknown;
+        };
+        /** ValidationError */
+        ValidationError: {
+            /** Location */
+            loc: (string | number)[];
+            /** Message */
+            msg: string;
+            /** Error Type */
+            type: string;
+        };
     };
-    /** FeatureCollection */
-    FeatureCollection: {
-      /**
-       * Type
-       * @constant
-       */
-      type: "FeatureCollection";
-      /** Features */
-      features: components["schemas"]["Feature"][];
-    };
-    /** HTTPValidationError */
-    HTTPValidationError: {
-      /** Detail */
-      detail?: components["schemas"]["ValidationError"][];
-    };
-    /** LineString */
-    LineString: {
-      /**
-       * Type
-       * @constant
-       */
-      type: "LineString";
-      /** Coordinates */
-      coordinates: [number, number][];
-    };
-    /** MultiLineString */
-    MultiLineString: {
-      /**
-       * Type
-       * @constant
-       */
-      type: "MultiLineString";
-      /** Coordinates */
-      coordinates: [number, number][][];
-    };
-    /** MultiPoint */
-    MultiPoint: {
-      /**
-       * Type
-       * @constant
-       */
-      type: "MultiPoint";
-      /** Coordinates */
-      coordinates: [number, number][];
-    };
-    /** MultiPolygon */
-    MultiPolygon: {
-      /**
-       * Type
-       * @constant
-       */
-      type: "MultiPolygon";
-      /** Coordinates */
-      coordinates: [number, number][][][];
-    };
-    /** Point */
-    Point: {
-      /**
-       * Type
-       * @constant
-       */
-      type: "Point";
-      /**
-       * Coordinates
-       * @description Coordinates in the format (lon, lat)
-       */
-      coordinates: [number, number];
-    };
-    /** Polygon */
-    Polygon: {
-      /**
-       * Type
-       * @constant
-       */
-      type: "Polygon";
-      /** Coordinates */
-      coordinates: [number, number][][];
-    };
-    /** Properties */
-    Properties: {
-      /**
-       * Name
-       * @description Name of the OSM-object
-       */
-      name?: string | null;
-      /**
-       * Osm Type
-       * @description Whether the OSM object is an OSM node (N), way (W), or relation (R)
-       */
-      osm_type: "N" | "W" | "R";
-      /**
-       * Osm Id
-       * @description An ID uniquely identifies the OSM-object within the OSM-type
-       */
-      osm_id: number;
-      /**
-       * Type
-       * @description The type of the place (e.g. house, street, city, country)
-       */
-      type?: "house" | "street" | "locality" | "district" | "city" | "county" | "state" | "country" | null;
-      /**
-       * Country
-       * @description Name of the country that the OSM-object is in
-       */
-      country?: string | null;
-      /**
-       * County
-       * @description Name of the county that the OSM-object is in
-       */
-      county?: string | null;
-      /**
-       * City
-       * @description Name of the city that the OSM-object is in
-       */
-      city?: string | null;
-      /**
-       * Countrycode
-       * @description Country code for the country that the OSM-object is in
-       */
-      countrycode?: string | null;
-      /**
-       * Osm Key
-       * @description Key of the main tag of the OSM object (e.g. boundary, highway, amenity)
-       */
-      osm_key?: string | null;
-      /**
-       * Osm Value
-       * @description Value of the main tag of the OSM object (e.g. residential, restaurant)
-       */
-      osm_value?: string | null;
-      /**
-       * Postcode
-       * @description Postal code of the OSM-object
-       */
-      postcode?: string | null;
-      /**
-       * Extent
-       * @description The bounding box formatted as (min latitude, max latitude, min longitude, max longitude)
-       */
-      extent?: [number, number, number, number] | null;
-      [key: string]: unknown;
-    };
-    /** ValidationError */
-    ValidationError: {
-      /** Location */
-      loc: (string | number)[];
-      /** Message */
-      msg: string;
-      /** Error Type */
-      type: string;
-    };
-  };
-  responses: never;
-  parameters: never;
-  requestBodies: never;
-  headers: never;
-  pathItems: never;
+    responses: never;
+    parameters: never;
+    requestBodies: never;
+    headers: never;
+    pathItems: never;
 }
-
 export type $defs = Record<string, never>;
-
-export type external = Record<string, never>;
-
 export interface operations {
-
-  /**
-   * Geocoding
-   * @description Returns a GeoJSON FeatureCollection of places matching the search query
-   */
-  geocoding__get: {
-    parameters: {
-      query: {
-        /** @description Search query */
-        q: string;
-        /** @description Geocode with priority to this latitude */
-        lat?: number | null;
-        /** @description Geocode with priority to this longitude */
-        lon?: number | null;
-        /** @description Set preferred language (e.g. "default", "en", "de", "fr") */
-        lang?: string | null;
-        /** @description Limit number of results */
-        limit?: number | null;
-      };
-    };
-    responses: {
-      /** @description Successful Response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["FeatureCollection"];
+    geocoding__get: {
+        parameters: {
+            query: {
+                /** @description Search query */
+                q: string;
+                /** @description Geocode with priority to this latitude */
+                lat?: number | null;
+                /** @description Geocode with priority to this longitude */
+                lon?: number | null;
+                /** @description Set preferred language (e.g. "default", "en", "de", "fr") */
+                lang?: string | null;
+                /** @description Limit number of results */
+                limit?: number | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
         };
-      };
-      /** @description Validation Error */
-      422: {
-        content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FeatureCollection"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
         };
-      };
     };
-  };
-  /**
-   * Reverse Geocoding
-   * @description Returns a GeoJSON FeatureCollection of places near the provided coordinate
-   */
-  reverse_geocoding_reverse_get: {
-    parameters: {
-      query: {
-        /** @description Latitude */
-        lat: number;
-        /** @description Longitude */
-        lon: number;
-        /** @description Set preferred language (e.g. "default", "en", "de", "fr") */
-        lang?: string | null;
-        /** @description Limit number of results */
-        limit?: number | null;
-      };
-    };
-    responses: {
-      /** @description Successful Response */
-      200: {
-        content: {
-          "application/json": components["schemas"]["FeatureCollection"];
+    reverse_geocoding_reverse_get: {
+        parameters: {
+            query: {
+                /** @description Latitude */
+                lat: number;
+                /** @description Longitude */
+                lon: number;
+                /** @description Set preferred language (e.g. "default", "en", "de", "fr") */
+                lang?: string | null;
+                /** @description Limit number of results */
+                limit?: number | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
         };
-      };
-      /** @description Validation Error */
-      422: {
-        content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FeatureCollection"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
         };
-      };
     };
-  };
-  /** Readiness */
-  readiness_ready_get: {
-    responses: {
-      /** @description Successful Response */
-      200: {
-        content: {
-          "application/json": unknown;
+    readiness_ready_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
         };
-      };
-    };
-  };
-  /** Liveness */
-  liveness_health_get: {
-    responses: {
-      /** @description Successful Response */
-      200: {
-        content: {
-          "application/json": {
-            [key: string]: string;
-          };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
         };
-      };
     };
-  };
+    liveness_health_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: string | undefined;
+                    };
+                };
+            };
+        };
+    };
 }
