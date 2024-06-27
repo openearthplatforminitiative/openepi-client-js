@@ -131,4 +131,4 @@ dist
 
 .idea
 
-generated
+.DS_Store

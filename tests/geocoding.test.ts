@@ -1,18 +1,18 @@
-import { GeocoderClient } from "../src";
+import { GeocoderClient } from '../src';
 
 const client = new GeocoderClient();
 
-test("fetching reverse geocode", async () => {
+test('fetching reverse geocode', async () => {
   const result = await client.getReverseGeocoding({
     lat: -1.79597,
     lon: 29.922001,
   });
-  expect(result.data).toHaveProperty("features");
+  expect(result.data).toHaveProperty('features');
 });
 
-test("fetching geocode", async () => {
+test('fetching geocode', async () => {
   const result = await client.getGeocoding({
-    q: "Berlin",
+    q: 'Berlin',
   });
-  expect(result.data).toHaveProperty("features");
+  expect(result.data).toHaveProperty('features');
 });
