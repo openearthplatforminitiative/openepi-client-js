@@ -99,6 +99,24 @@ client.getSoilType({ lon: 9.58, lat: 60.1 }).then((result) => {
 });
 ```
 
+### Crop Health API
+
+```javascript
+import { CropHealthClient } from 'openepi-client';
+import * as fs from 'fs';
+const image = fs.readFileSync('./cocoa.jpg');
+
+const client = new CropHealthClient();
+client.getBinaryPrediction(image).then((result) => {
+  const { data, error } = result;
+  if (error) {
+    console.error(error);
+  } else {
+    console.log(data);
+  } 
+})
+```
+
 ### Using custom base URL
 
 ```javascript
