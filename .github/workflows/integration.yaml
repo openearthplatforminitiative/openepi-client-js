@@ -22,9 +22,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Generate types from OpenAPI-spec
-        run: npm run generate-types
-
       - name: Build project
         run: npm run build
 
@@ -44,9 +41,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Generate types from OpenAPI-spec
-        run: npm run generate-types
 
       - name: Check code formatting
         run: npm run type:check
@@ -87,9 +81,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Generate types from OpenAPI-spec
-        run: npm run generate-types
 
       - name: Run tests
         run: npm run test
