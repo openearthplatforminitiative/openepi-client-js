@@ -36,4 +36,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub token for the release and tag creation
           NPM_TOKEN: ${{ secrets.NPM_SECRET }} # NPM token for publishing the package
-  
+
