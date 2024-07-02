@@ -3,15 +3,13 @@ name: Publish to npm
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [main]
     paths-ignore:
       - 'tests/**'
 
 jobs:
-  
   checks:
     uses: ./.github/workflows/build-and-test.yaml
-
 
   # Build and publish to npm
   publish:

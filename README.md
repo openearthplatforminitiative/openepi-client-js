@@ -113,8 +113,8 @@ client.getBinaryPrediction(image).then((result) => {
     console.error(error);
   } else {
     console.log(data);
-  } 
-})
+  }
+});
 ```
 
 ### Using custom base URL
