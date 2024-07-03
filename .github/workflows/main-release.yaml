@@ -15,6 +15,9 @@ jobs:
     name: Semantic Release
     needs: [checks] # Ensure checks completes successfully before publishing
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
     steps:
       - name: Checkout project
         uses: actions/checkout@v4
