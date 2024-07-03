@@ -9,7 +9,7 @@ on:
 
 jobs:
   checks:
-    uses: ./.github/workflows/build-and-test.yaml
+    uses: ./.github/workflows/integration.yaml
 
   release:
     name: Semantic Release
