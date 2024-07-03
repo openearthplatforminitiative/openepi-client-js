@@ -1,0 +1,39 @@
+name: Publish to npm
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'tests/**'
+
+jobs:
+  checks:
+    uses: ./.github/workflows/integration.yaml
+
+  release:
+    name: Semantic Release
+    needs: [checks] # Ensure checks completes successfully before publishing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Important for semantic-release to analyze commits
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Semantic Release
+        run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub token for the release and tag creation
+          NPM_TOKEN: ${{ secrets.NPM_SECRET }} # NPM token for publishing the package
+
