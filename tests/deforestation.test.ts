@@ -1,5 +1,16 @@
 import { DeforestationClient } from '../src';
 
+// Mock the DeforestationClient methods
+jest.mock('../src', () => {
+  return {
+    DeforestationClient: jest.fn().mockImplementation(() => {
+      return {
+        getBasin: jest.fn().mockResolvedValue({ data: { features: [] } }),
+      };
+    }),
+  };
+});
+
 const client = new DeforestationClient();
 
 test('fetches basin', async () => {

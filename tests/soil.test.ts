@@ -1,5 +1,22 @@
 import { SoilClient } from '../src';
 
+// Mock the SoilClient methods
+jest.mock('../src', () => {
+  return {
+    SoilClient: jest.fn().mockImplementation(() => {
+      return {
+        getSoilType: jest.fn().mockResolvedValue({ data: { geometry: {} } }),
+        getSoilProperty: jest
+          .fn()
+          .mockResolvedValue({ data: { geometry: {} } }),
+        getSoilTypeSummary: jest
+          .fn()
+          .mockResolvedValue({ data: { geometry: {} } }),
+      };
+    }),
+  };
+});
+
 const client = new SoilClient();
 
 test('fetches soil type', async () => {

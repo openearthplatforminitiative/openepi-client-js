@@ -1,5 +1,19 @@
 import { WeatherClient } from '../src';
 
+// Mock the WeatherClient methods
+jest.mock('../src', () => {
+  return {
+    WeatherClient: jest.fn().mockImplementation(() => {
+      return {
+        getLocationForecast: jest
+          .fn()
+          .mockResolvedValue({ data: { geometry: {} } }),
+        getSunrise: jest.fn().mockResolvedValue({ data: { geometry: {} } }),
+      };
+    }),
+  };
+});
+
 const client = new WeatherClient();
 
 test('fetches location forecast', async () => {

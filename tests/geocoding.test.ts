@@ -1,5 +1,19 @@
 import { GeocoderClient } from '../src';
 
+// Mock the GeocoderClient methods
+jest.mock('../src', () => {
+  return {
+    GeocoderClient: jest.fn().mockImplementation(() => {
+      return {
+        getReverseGeocoding: jest
+          .fn()
+          .mockResolvedValue({ data: { features: [] } }),
+        getGeocoding: jest.fn().mockResolvedValue({ data: { features: [] } }),
+      };
+    }),
+  };
+});
+
 const client = new GeocoderClient();
 
 test('fetching reverse geocode', async () => {

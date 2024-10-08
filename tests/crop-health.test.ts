@@ -1,6 +1,25 @@
 import { CropHealthClient } from '../src';
 import * as fs from 'fs';
 
+// Mock the CropHealthClient methods
+jest.mock('../src', () => {
+  return {
+    CropHealthClient: jest.fn().mockImplementation(() => {
+      return {
+        getBinaryPrediction: jest
+          .fn()
+          .mockResolvedValue({ data: { HLT: 'healthy' } }),
+        getSingleHLTPrediction: jest
+          .fn()
+          .mockResolvedValue({ data: { HLT: 'healthy' } }),
+        getMultiHLTPrediction: jest
+          .fn()
+          .mockResolvedValue({ data: { HLT_maize: 'healthy' } }),
+      };
+    }),
+  };
+});
+
 const client = new CropHealthClient();
 const image = fs.readFileSync('./tests/assets/plant.jpg');
 

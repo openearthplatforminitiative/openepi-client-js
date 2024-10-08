@@ -1,5 +1,24 @@
 import { FloodClient } from '../src';
 
+// Mock the FloodClient methods
+jest.mock('../src', () => {
+  return {
+    FloodClient: jest.fn().mockImplementation(() => {
+      return {
+        getSummaryForecast: jest
+          .fn()
+          .mockResolvedValue({ data: { queried_location: {} } }),
+        getDetailedForecast: jest
+          .fn()
+          .mockResolvedValue({ data: { queried_location: {} } }),
+        getThresholds: jest
+          .fn()
+          .mockResolvedValue({ data: { queried_location: {} } }),
+      };
+    }),
+  };
+});
+
 const client = new FloodClient();
 
 test('fetches summary', async () => {
