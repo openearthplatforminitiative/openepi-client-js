@@ -13,7 +13,8 @@
     "generate-types": "./generate-types.sh",
     "format": "prettier --write --ignore-path .gitignore .",
     "format:check": "prettier --check --ignore-path .gitignore .",
-    "type:check": "tsc --noEmit --pretty"
+    "type:check": "tsc --noEmit --pretty",
+    "docs": "typedoc ./src"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
     "ts-jest": "^29.1.5",
     "ts-node": "^10.9.1",
     "tsup": "^8.0.1",
+    "typedoc": "^0.26.5",
     "typescript": "^5.3.2"
   },
   "dependencies": {

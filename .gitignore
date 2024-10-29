@@ -132,3 +132,7 @@ dist
 .idea
 
 .DS_Store
+
+
+# Generated docs
+docs/
