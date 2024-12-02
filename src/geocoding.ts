@@ -7,10 +7,10 @@ import createClient from 'openapi-fetch';
 export default class GeocoderClient {
   /**
    * Creates an instance of GeocoderClient.
-   * @param {string} [baseUrl='https://api-test.openepi.io/geocoding'] - The base URL for the geocoding API.
+   * @param {string} [baseUrl='https://api.openepi.io/geocoding'] - The base URL for the geocoding API.
    */
   constructor(
-    private readonly baseUrl: string = 'https://api-test.openepi.io/geocoding'
+    private readonly baseUrl: string = 'https://api.openepi.io/geocoding'
   ) {}
 
   /**

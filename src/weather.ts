@@ -7,10 +7,10 @@ import createClient from 'openapi-fetch';
 export default class WeatherClient {
   /**
    * Creates an instance of WeatherClient.
-   * @param {string} [baseUrl='https://api-test.openepi.io/weather'] - The base URL for the weather API.
+   * @param {string} [baseUrl='https://api.openepi.io/weather'] - The base URL for the weather API.
    */
   constructor(
-    private readonly baseUrl: string = 'https://api-test.openepi.io/weather'
+    private readonly baseUrl: string = 'https://api.openepi.io/weather'
   ) {}
 
   /**
