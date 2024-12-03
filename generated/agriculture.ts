@@ -20,9 +20,9 @@ export interface paths {
       parameters: {
         query: {
           /** @description Latitude */
-          lat: string;
+          lat: number;
           /** @description Longitude */
-          lon: string;
+          lon: number;
         };
         header?: never;
         path?: never;
