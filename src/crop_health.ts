@@ -14,10 +14,10 @@ type MultiHLTResponse =
 export default class CropHealthClient {
   /**
    * Creates an instance of CropHealthClient.
-   * @param {string} [baseUrl='https://api-test.openepi.io/crop-health'] The base URL for the crop health API.
+   * @param {string} [baseUrl='https:/api.openepi.io/crop-health'] The base URL for the crop health API.
    */
   constructor(
-    private readonly baseUrl: string = 'https://api-test.openepi.io/crop-health'
+    private readonly baseUrl: string = 'https:/api.openepi.io/crop-health'
   ) {}
 
   /**

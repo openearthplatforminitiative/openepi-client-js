@@ -7,10 +7,10 @@ import createClient from 'openapi-fetch';
 export default class SoilClient {
   /**
    * Creates an instance of SoilClient.
-   * @param {string} [baseUrl='https://api-test.openepi.io/soil'] - The base URL for the soil API.
+   * @param {string} [baseUrl='https://api.openepi.io/soil'] - The base URL for the soil API.
    */
   constructor(
-    private readonly baseUrl: string = 'https://api-test.openepi.io/soil'
+    private readonly baseUrl: string = 'https://api.openepi.io/soil'
   ) {}
 
   /**

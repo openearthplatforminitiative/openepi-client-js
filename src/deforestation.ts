@@ -7,10 +7,10 @@ import createClient from 'openapi-fetch';
 export default class DeforestationClient {
   /**
    * Creates an instance of DeforestationClient.
-   * @param {string} [baseUrl='https://api-test.openepi.io/deforestation'] - The base URL for the deforestation API.
+   * @param {string} [baseUrl='https://api.openepi.io/deforestation'] - The base URL for the deforestation API.
    */
   constructor(
-    private readonly baseUrl: string = 'https://api-test.openepi.io/deforestation'
+    private readonly baseUrl: string = 'https://api.openepi.io/deforestation'
   ) {}
 
   /**

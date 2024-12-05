@@ -7,10 +7,10 @@ import createClient from 'openapi-fetch';
 export default class FloodClient {
   /**
    * Creates an instance of FloodClient.
-   * @param {string} [baseUrl='https://api-test.openepi.io/flood'] - The base URL for the flood API.
+   * @param {string} [baseUrl='https://api.openepi.io/flood'] - The base URL for the flood API.
    */
   constructor(
-    private readonly baseUrl: string = 'https://api-test.openepi.io/flood'
+    private readonly baseUrl: string = 'https://api.openepi.io/flood'
   ) {}
 
   /**

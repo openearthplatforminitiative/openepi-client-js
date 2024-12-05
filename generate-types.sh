@@ -1,10 +1,11 @@
 #!/bin/sh
-openapi-typescript https://api-test.openepi.io/geocoding/openapi.json --output generated/geocoding.ts
-openapi-typescript https://api-test.openepi.io/weather/openapi.json --output generated/weather.ts
-openapi-typescript https://api-test.openepi.io/flood/openapi.json --output generated/flood.ts
-openapi-typescript https://api-test.openepi.io/deforestation/openapi.json --output generated/deforestation.ts
-openapi-typescript https://api-test.openepi.io/soil/openapi.json --output generated/soil.ts
-openapi-typescript https://api-test.openepi.io/crop-health/openapi.json --output generated/crop_health.ts
+openapi-typescript https://api.openepi.io/geocoding/openapi.json --output generated/geocoding.ts
+openapi-typescript https://api.openepi.io/weather/openapi.json --output generated/weather.ts
+openapi-typescript https://api.openepi.io/flood/openapi.json --output generated/flood.ts
+openapi-typescript https://api.openepi.io/deforestation/openapi.json --output generated/deforestation.ts
+openapi-typescript https://api.openepi.io/soil/openapi.json --output generated/soil.ts
+openapi-typescript https://api.openepi.io/crop-health/openapi.json --output generated/crop_health.ts
+openapi-typescript https://api.openepi.io/agriculture/openapi.json --output generated/crop_health.ts
 
 
 # When generating types from the openapi spec, it makes the requestBody image-type "string".
