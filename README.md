@@ -12,6 +12,23 @@ npm run generate-types
 
 ## Examples
 
+### Agriculture
+
+```javascript
+import { AgricultureClient } from 'openepi-client';
+
+const client = new AgricultureClient();
+
+client.getSummary({ lon: 30.0619, lat: -1.9441 }).then((result) => {
+  const { data, error } = result;
+  if (error) {
+    console.error(error);
+  } else {
+    console.log(data);
+  }
+});
+```
+
 ### Geocoding
 
 ```javascript
