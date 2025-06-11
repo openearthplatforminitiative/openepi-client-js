@@ -8,7 +8,8 @@ import createClient from 'openapi-fetch';
 export default class WeatherClient {
   /**
    * Creates an instance of WeatherClient.
-   * @param {string} [weatherBaseUrl='https://api.met.no/weatherapi/locationforecast/2.0/classic'] - The base URL for the weather API.
+   * @param {string} [weatherBaseUrl='https://api.met.no/weatherapi/locationforecast/2.0'] - The base URL for the forecast API.
+   * @param {string} [sunriseBaseUrl='https://api.met.no/weatherapi/sunrise/3.0'] - The base URL for the forecast API.
    */
   constructor(
     private readonly weatherBaseUrl: string = 'https://api.met.no/weatherapi/locationforecast/2.0',
