@@ -1,4 +1,5 @@
-import type { paths } from '../generated/weather';
+import type { paths as weatherPaths } from '../generated/weather';
+import type { paths as sunrisePaths } from '../generated/sunrise';
 import createClient from 'openapi-fetch';
 
 /**
@@ -7,31 +8,48 @@ import createClient from 'openapi-fetch';
 export default class WeatherClient {
   /**
    * Creates an instance of WeatherClient.
-   * @param {string} [baseUrl='https://api.openepi.io/weather'] - The base URL for the weather API.
+   * @param {string} [weatherBaseUrl='https://api.met.no/weatherapi/locationforecast/2.0/classic'] - The base URL for the weather API.
    */
   constructor(
-    private readonly baseUrl: string = 'https://api.openepi.io/weather'
+    private readonly weatherBaseUrl: string = 'https://api.met.no/weatherapi/locationforecast/2.0',
+    private readonly sunriseBaseUrl: string = 'https://api.met.no/weatherapi/sunrise/3.0',
+    private readonly defaultHeader: Record<string, string> = {
+      'User-Agent':
+        'openepi.io github.com/openearthplatforminitiative/openepi-client-js',
+    }
   ) {}
 
   /**
    * Gets location forecast data from the weather API.
-   * @param {paths['/locationforecast']['get']['parameters']['query']} query - The query parameters for the location forecast request.
+   * @param {weatherPaths['/complete']['get']['parameters']['query']} query - The query parameters for the location forecast request.
    * @returns {Promise<FetchResponse>} The response from the location forecast endpoint.
    */
   async getLocationForecast(
-    query: paths['/locationforecast']['get']['parameters']['query']
+    query: weatherPaths['/complete']['get']['parameters']['query'],
+    header: Record<string, string> = {}
   ) {
-    const { GET } = createClient<paths>({ baseUrl: this.baseUrl });
-    return GET('/locationforecast', { params: { query } });
+    const { GET } = createClient<weatherPaths>({
+      baseUrl: this.weatherBaseUrl,
+    });
+    return GET('/complete', {
+      params: { query, header: { ...this.defaultHeader, ...header } },
+    });
   }
 
   /**
    * Gets sunrise data from the weather API.
-   * @param {paths['/sunrise']['get']['parameters']['query']} query - The query parameters for the sunrise request.
+   * @param {sunrisePaths['/sun']['get']['parameters']['query']} query - The query parameters for the sunrise request.
    * @returns {Promise<FetchResponse>} The response from the sunrise endpoint.
    */
-  async getSunrise(query: paths['/sunrise']['get']['parameters']['query']) {
-    const { GET } = createClient<paths>({ baseUrl: this.baseUrl });
-    return GET('/sunrise', { params: { query } });
+  async getSunrise(
+    query: sunrisePaths['/sun']['get']['parameters']['query'],
+    header: Record<string, string> = {}
+  ) {
+    const { GET } = createClient<sunrisePaths>({
+      baseUrl: this.sunriseBaseUrl,
+    });
+    return GET('/sun', {
+      params: { query, header: { ...this.defaultHeader, ...header } },
+    });
   }
 }

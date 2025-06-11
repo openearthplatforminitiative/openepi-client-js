@@ -207,6 +207,7 @@ export interface components {
         | 'county'
         | 'state'
         | 'country'
+        | 'other'
         | null;
       /**
        * Country
