@@ -1,6 +1,7 @@
 #!/bin/sh
 openapi-typescript https://api.openepi.io/geocoding/openapi.json --output generated/geocoding.ts
-openapi-typescript https://api.openepi.io/weather/openapi.json --output generated/weather.ts
+npx openapi-typescript@5 https://api.met.no/weatherapi/locationforecast/2.0/swagger --output generated/weather.ts
+npx openapi-typescript@5 https://api.met.no/weatherapi/sunrise/3.0/swagger --output generated/sunrise.ts
 openapi-typescript https://api.openepi.io/flood/openapi.json --output generated/flood.ts
 openapi-typescript https://api.openepi.io/deforestation/openapi.json --output generated/deforestation.ts
 openapi-typescript https://api.openepi.io/soil/openapi.json --output generated/soil.ts

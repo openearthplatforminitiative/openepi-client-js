@@ -1,12 +1,7 @@
-import type { components, paths } from '../generated/crop_health';
-import createClient, { FetchResponse } from 'openapi-fetch';
+import type { paths } from '../generated/crop_health';
+import createClient from 'openapi-fetch';
 
 type PredictionType = 'binary' | 'single-HLT' | 'multi-HLT';
-type BinaryResponse = components['schemas']['BinaryHealthPredictionResponse'];
-type SingleHLTResponse =
-  components['schemas']['SingleHLTHealthPredictionResponse'];
-type MultiHLTResponse =
-  components['schemas']['MultiHLTHealthPredictionResponse'];
 
 /**
  * A Client class for quering the crop health api

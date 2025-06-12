@@ -80,89 +80,109 @@ export interface components {
      *       "HLT": 0.85,
      *       "NOT_HLT": 0.15
      *     } */
-    BinaryHealthPredictionResponse: {
+    BinaryPredictionResponse: {
       /** @description Healthy */
-      HLT?: number;
+      HLT: number;
       /** @description Not Healthy */
-      NOT_HLT?: number;
+      NOT_HLT: number;
     };
     /** @example {
-     *       "HLT": 0.9110000729560852,
-     *       "FAW": 0.05462193489074707,
-     *       "CSSVD": 0.025387784466147423,
-     *       "FW": 0.004624366760253906,
-     *       "MSV": 0.001886515412479639
+     *       "HLT": 0.8450168371200562,
+     *       "CSSVD": 0.14720021188259125,
+     *       "ANT": 0.007312592584639788,
+     *       "CMD": 0.00043629767606034875,
+     *       "BR": 0.000018495124095352367,
+     *       "CBSD": 0.0000063890015553624835,
+     *       "FW": 0.000003867091891152086,
+     *       "FAW": 0.0000030916353352949955,
+     *       "ALS": 0.0000014288182228483493,
+     *       "MSV": 6.82656491335365e-7,
+     *       "MLB": 1.0789210591610754e-7,
+     *       "BS": 1.5242493489608933e-8,
+     *       "MLN": 1.5041418111039206e-9
      *     } */
-    SingleHLTHealthPredictionResponse: {
+    SingleHLTPredictionResponse: {
       /** @description Healthy */
-      HLT?: number;
+      HLT: number;
       /** @description Cassava Brown Streak Disease */
-      CBSD?: number;
+      CBSD: number;
       /** @description Cassava Mosaic Disease */
-      CMD?: number;
+      CMD: number;
       /** @description Maize Lethal Necrosis */
-      MLN?: number;
+      MLN: number;
       /** @description Maize Streak Virus */
-      MSV?: number;
+      MSV: number;
       /** @description Fall Armyworm */
-      FAW?: number;
+      FAW: number;
       /** @description Maize Leaf Blight */
-      MLB?: number;
+      MLB: number;
       /** @description Bean Rust */
-      BR?: number;
+      BR: number;
       /** @description Angular Leaf Spot */
-      ALS?: number;
+      ALS: number;
       /** @description Black Sigatoka */
-      BS?: number;
+      BS: number;
       /** @description Fusarium Wilt Race 1 */
-      FW?: number;
+      FW: number;
       /** @description Anthracnose */
-      ANT?: number;
+      ANT: number;
       /** @description Cocoa Swollen Shoot Virus Disease */
-      CSSVD?: number;
+      CSSVD: number;
     };
     /** @example {
-     *       "HLT_cocoa": 0.27080613374710083,
-     *       "HLT_bananas": 0.1852046251296997,
-     *       "FAW_maize": 0.15339095890522003,
-     *       "HLT_maize": 0.12040198594331741,
-     *       "FW_bananas": 0.11432896554470062
+     *       "HLT_cocoa": 0.4922555685043335,
+     *       "CSSVD_cocoa": 0.31238827109336853,
+     *       "HLT_beans": 0.1199931725859642,
+     *       "HLT_maize": 0.055395256727933884,
+     *       "ANT_cocoa": 0.008309438824653625,
+     *       "BR_beans": 0.005891730077564716,
+     *       "HLT_bananas": 0.002898828824982047,
+     *       "ALS_beans": 0.0012257732450962067,
+     *       "CMD_cassava": 0.0009540125029161572,
+     *       "HLT_cassava": 0.0003349129983689636,
+     *       "FAW_maize": 0.00016859767492860556,
+     *       "CBSD_cassava": 0.00010111751180374995,
+     *       "MSV_maize": 0.0000391885478165932,
+     *       "FW_bananas": 0.000023203281671158038,
+     *       "MLB_maize": 0.000020815876268898137,
+     *       "MLN_maize": 8.257627115426658e-8,
+     *       "BS_bananas": 9.579996351760656e-9
      *     } */
-    MultiHLTHealthPredictionResponse: {
+    MultiHLTPredictionResponse: {
       /** @description Healthy Cassava */
-      HLT_cassava?: number;
+      HLT_cassava: number;
       /** @description Cassava Brown Streak Disease */
-      CBSD_cassava?: number;
+      CBSD_cassava: number;
       /** @description Cassava Mosaic Disease */
-      CMD_cassava?: number;
+      CMD_cassava: number;
       /** @description Maize Lethal Necrosis */
-      MLN_maize?: number;
+      MLN_maize: number;
       /** @description Healthy Maize */
-      HLT_maize?: number;
+      HLT_maize: number;
       /** @description Maize Streak Virus */
-      MSV_maize?: number;
+      MSV_maize: number;
       /** @description Fall Armyworm */
-      FAW_maize?: number;
+      FAW_maize: number;
       /** @description Maize Leaf Blight */
-      MLB_maize?: number;
+      MLB_maize: number;
       /** @description Healthy Beans */
-      HLT_beans?: number;
+      HLT_beans: number;
       /** @description Bean Rust */
-      BR_beans?: number;
+      BR_beans: number;
       /** @description Angular Leaf Spot */
-      ALS_beans?: number;
+      ALS_beans: number;
       /** @description Healthy Bananas */
-      HLT_bananas?: number;
+      HLT_bananas: number;
       /** @description Black Sigatoka */
-      BS_bananas?: number;
+      BS_bananas: number;
       /** @description Fusarium Wilt Race 1 */
-      FW_bananas?: number;
+      FW_bananas: number;
       /** @description Healthy Cocoa */
-      HLT_cocoa?: number;
+      HLT_cocoa: number;
       /** @description Anthracnose */
-      ANT_cocoa?: number;
+      ANT_cocoa: number;
       /** @description Cocoa Swollen Shoot Virus Disease */
-      CSSVD_cocoa?: number;
+      CSSVD_cocoa: number;
     };
   };
   responses: never;
@@ -232,7 +252,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['BinaryHealthPredictionResponse'];
+          'application/json': components['schemas']['BinaryPredictionResponse'];
         };
       };
       /** @description Model not found or Model Version not found */
@@ -305,7 +325,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['SingleHLTHealthPredictionResponse'];
+          'application/json': components['schemas']['SingleHLTPredictionResponse'];
         };
       };
       /** @description Model not found or Model Version not found */
@@ -378,7 +398,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['MultiHLTHealthPredictionResponse'];
+          'application/json': components['schemas']['MultiHLTPredictionResponse'];
         };
       };
       /** @description Model not found or Model Version not found */
