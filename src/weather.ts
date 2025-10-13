@@ -28,7 +28,11 @@ export default class WeatherClient {
   async getLocationForecast(
     query: weatherPaths['/complete']['get']['parameters']['query'],
     header: Record<string, string> = {}
-  ) {
+  ): Promise<{
+    data?: weatherPaths['/complete']['get']['responses']['200']['schema'];
+    error?: unknown;
+    response: Response;
+  }> {
     const { GET } = createClient<weatherPaths>({
       baseUrl: this.weatherBaseUrl,
     });
@@ -45,7 +49,11 @@ export default class WeatherClient {
   async getSunrise(
     query: sunrisePaths['/sun']['get']['parameters']['query'],
     header: Record<string, string> = {}
-  ) {
+  ): Promise<{
+    data?: sunrisePaths['/sun']['get']['responses']['200']['schema'];
+    error?: unknown;
+    response: Response;
+  }> {
     const { GET } = createClient<sunrisePaths>({
       baseUrl: this.sunriseBaseUrl,
     });
