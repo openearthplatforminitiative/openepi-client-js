@@ -99,7 +99,44 @@ export interface components {
         | components['schemas']['MultiPolygon'];
       properties: components['schemas']['Properties'];
     };
-    /** FeatureCollection */
+    /**
+     * FeatureCollection
+     * @example {
+     *       "features": [
+     *         {
+     *           "geometry": {
+     *             "coordinates": [
+     *               13.438596,
+     *               52.519854
+     *             ],
+     *             "type": "Point"
+     *           },
+     *           "properties": {
+     *             "city": "Berlin",
+     *             "country": "Germany",
+     *             "name": "Berlin"
+     *           },
+     *           "type": "Feature"
+     *         },
+     *         {
+     *           "geometry": {
+     *             "coordinates": [
+     *               61.195088,
+     *               54.005826
+     *             ],
+     *             "type": "Point"
+     *           },
+     *           "properties": {
+     *             "country": "Russia",
+     *             "name": "Berlin",
+     *             "postcode": "457130"
+     *           },
+     *           "type": "Feature"
+     *         }
+     *       ],
+     *       "type": "FeatureCollection"
+     *     }
+     */
     FeatureCollection: {
       /**
        * Type
@@ -249,6 +286,7 @@ export interface components {
        * @description The bounding box formatted as (min latitude, max latitude, min longitude, max longitude)
        */
       extent?: [number, number, number, number] | null;
+    } & {
       [key: string]: unknown;
     };
     /** ValidationError */
@@ -383,7 +421,7 @@ export interface operations {
         };
         content: {
           'application/json': {
-            [key: string]: string | undefined;
+            [key: string]: string;
           };
         };
       };

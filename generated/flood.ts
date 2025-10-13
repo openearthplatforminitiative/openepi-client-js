@@ -658,7 +658,7 @@ export interface operations {
         };
         content: {
           'application/json': {
-            [key: string]: string | undefined;
+            [key: string]: string;
           };
         };
       };

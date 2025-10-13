@@ -14,7 +14,7 @@ export interface paths {
     };
   };
   '/classic': {
-    /** Weather forecast for a specified place */
+    /** Weather forecasts for any location on earth */
     get: {
       parameters: {
         query: {
@@ -57,7 +57,7 @@ export interface paths {
     };
   };
   '/classic.{format}': {
-    /** Weather forecast for a specified place */
+    /** Weather forecasts for any location on earth */
     get: {
       parameters: {
         query: {
@@ -104,7 +104,7 @@ export interface paths {
     };
   };
   '/compact': {
-    /** Weather forecast for a specified place */
+    /** Weather forecasts for any location on earth */
     get: {
       parameters: {
         query: {
@@ -147,7 +147,7 @@ export interface paths {
     };
   };
   '/compact.{format}': {
-    /** Weather forecast for a specified place */
+    /** Weather forecasts for any location on earth */
     get: {
       parameters: {
         query: {
@@ -194,7 +194,7 @@ export interface paths {
     };
   };
   '/complete': {
-    /** Weather forecast for a specified place */
+    /** Weather forecasts for any location on earth */
     get: {
       parameters: {
         query: {
@@ -237,7 +237,7 @@ export interface paths {
     };
   };
   '/complete.{format}': {
-    /** Weather forecast for a specified place */
+    /** Weather forecasts for any location on earth */
     get: {
       parameters: {
         query: {
@@ -311,7 +311,7 @@ export interface paths {
     };
   };
   '/status': {
-    /** Weather forecast for a specified place */
+    /** Weather forecasts for any location on earth */
     get: {
       parameters: {};
       responses: {
@@ -345,7 +345,7 @@ export interface paths {
     };
   };
   '/status.{format}': {
-    /** Weather forecast for a specified place */
+    /** Weather forecasts for any location on earth */
     get: {
       parameters: {
         path: {

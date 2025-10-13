@@ -1,12 +1,15 @@
 #!/bin/sh
 openapi-typescript https://api.openepi.io/geocoding/openapi.json --output generated/geocoding.ts
+
+# met.no APIs only provide Swagger 2.0 specs, which are not supported by openapi-typescript v7+
+# Must use openapi-typescript@5 for Swagger 2.0 support
 npx openapi-typescript@5 https://api.met.no/weatherapi/locationforecast/2.0/swagger --output generated/weather.ts
 npx openapi-typescript@5 https://api.met.no/weatherapi/sunrise/3.0/swagger --output generated/sunrise.ts
+
 openapi-typescript https://api.openepi.io/flood/openapi.json --output generated/flood.ts
 openapi-typescript https://api.openepi.io/deforestation/openapi.json --output generated/deforestation.ts
 openapi-typescript https://api.openepi.io/soil/openapi.json --output generated/soil.ts
 openapi-typescript https://api.openepi.io/crop-health/openapi.json --output generated/crop_health.ts
-openapi-typescript https://api.openepi.io/agriculture/openapi.json --output generated/crop_health.ts
 
 
 # When generating types from the openapi spec, it makes the requestBody image-type "string".

@@ -73,30 +73,41 @@ export interface components {
       /**
        * Downstream Id
        * @description Id of the next downstream polygon for the current basin polygon. The value 0 means that there is no downstream connection.
+       * @example 1071114980
        */
       downstream_id: number;
       /**
        * Basin Area
        * @description Area of the basin polygon in square kilometers.
+       * @example 2350
        */
       basin_area: number;
       /**
        * Upstream Area
        * @description Total upstream area in square kilometers, including the current polygon.
+       * @example 29444.1
        */
       upstream_area: number;
-      /** Start Year */
+      /**
+       * Start Year
+       * @example 2020
+       */
       start_year: number;
-      /** End Year */
+      /**
+       * End Year
+       * @example 2022
+       */
       end_year: number;
       /**
        * Daterange Tot Treeloss
        * @description Total tree cover loss, in square kilometers, within the basin polygon over the time period from start_year to end_year (inclusive)
+       * @example 35.7217
        */
       daterange_tot_treeloss: number;
       /**
        * Daterange Rel Treeloss
        * @description Tree cover loss within the basin polygon relative to the total area of the polygon, over the time period from start_year to end_year (inclusive). Equivalent to `daterange_tot_treeloss / basin_area`.
+       * @example 0.0152
        */
       daterange_rel_treeloss: number;
       /** Treeloss Per Year */
@@ -107,6 +118,7 @@ export interface components {
       /**
        * Id
        * @description Unique basin polygon identifier.
+       * @example 1071119930
        */
       id: number;
       /**
@@ -140,16 +152,19 @@ export interface components {
       /**
        * Year
        * @description Year when the loss was detected.
+       * @example 2022
        */
       year: number;
       /**
        * Area
        * @description Total tree cover loss within the basin polygon, in square kilometers.
+       * @example 8.5095
        */
       area: number;
       /**
        * Relative Area
        * @description Tree cover loss within the basin polygon relative to the total area of the polygon.
+       * @example 0.0036
        */
       relative_area: number;
     };
@@ -273,7 +288,7 @@ export interface operations {
         };
         content: {
           'application/json': {
-            [key: string]: string | undefined;
+            [key: string]: string;
           };
         };
       };
