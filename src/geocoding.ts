@@ -7,7 +7,7 @@ import createClient from 'openapi-fetch';
 export default class GeocoderClient {
   /**
    * Creates an instance of GeocoderClient.
-   * @param {string} [baseUrl='https://photon.komoot.io/geocoding'] - The base URL for the geocoding API.
+   * @param {string} [baseUrl='https://photon.komoot.io'] - The base URL for the geocoding API.
    */
   constructor(private readonly baseUrl: string = 'https://photon.komoot.io') {}
 
