@@ -6,12 +6,6 @@ openapi-typescript https://api.openepi.io/geocoding/openapi.json --output genera
 npx openapi-typescript@5 https://api.met.no/weatherapi/locationforecast/2.0/swagger --output generated/weather.ts
 npx openapi-typescript@5 https://api.met.no/weatherapi/sunrise/3.0/swagger --output generated/sunrise.ts
 
-openapi-typescript https://api.openepi.io/flood/openapi.json --output generated/flood.ts
-openapi-typescript https://api.openepi.io/deforestation/openapi.json --output generated/deforestation.ts
-openapi-typescript https://api.openepi.io/soil/openapi.json --output generated/soil.ts
-openapi-typescript https://api.openepi.io/crop-health/openapi.json --output generated/crop_health.ts
-
-
 # When generating types from the openapi spec, it makes the requestBody image-type "string".
 # However, when sending an image in javascript we want to send the raw data, which then means
 # that we should use the type "Buffer". The following sed command changes that in the generated file. 
