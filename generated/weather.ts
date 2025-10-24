@@ -4,7 +4,7 @@
  */
 
 export interface paths {
-  "/changelog": {
+  '/changelog': {
     /** RSS feed of changes to this product */
     get: {
       responses: {
@@ -13,7 +13,7 @@ export interface paths {
       };
     };
   };
-  "/classic": {
+  '/classic': {
     /** Weather forecasts for any location on earth */
     get: {
       parameters: {
@@ -56,7 +56,7 @@ export interface paths {
       };
     };
   };
-  "/classic.{format}": {
+  '/classic.{format}': {
     /** Weather forecasts for any location on earth */
     get: {
       parameters: {
@@ -70,7 +70,7 @@ export interface paths {
         };
         path: {
           /** format code (file extension) */
-          format: "xml";
+          format: 'xml';
         };
       };
       responses: {
@@ -103,7 +103,7 @@ export interface paths {
       };
     };
   };
-  "/compact": {
+  '/compact': {
     /** Weather forecasts for any location on earth */
     get: {
       parameters: {
@@ -119,7 +119,7 @@ export interface paths {
       responses: {
         /** Success */
         200: {
-          schema: definitions["METJSONForecast"];
+          schema: definitions['METJSONForecast'];
         };
         /** 204 No Content */
         204: never;
@@ -146,97 +146,7 @@ export interface paths {
       };
     };
   };
-  "/compact.{format}": {
-    /** Weather forecasts for any location on earth */
-    get: {
-      parameters: {
-        query: {
-          /** Whole meters above sea level */
-          altitude?: number;
-          /** Latitude */
-          lat: number;
-          /** Longitude */
-          lon: number;
-        };
-        path: {
-          /** format code (file extension) */
-          format: "json";
-        };
-      };
-      responses: {
-        /** Success */
-        200: {
-          schema: definitions["METJSONForecast"];
-        };
-        /** 204 No Content */
-        204: never;
-        /** 400 Bad Request */
-        400: unknown;
-        /** 401 Unauthorized */
-        401: unknown;
-        /** 403 Forbidden */
-        403: unknown;
-        /** 404 Not Found */
-        404: unknown;
-        /** 422 Unprocessable Entity */
-        422: unknown;
-        /** 429 Too Many Requests */
-        429: unknown;
-        /** 500 Internal Server Error */
-        500: unknown;
-        /** 502 Bad Gateway */
-        502: unknown;
-        /** 503 Service Unavailable */
-        503: unknown;
-        /** 504 Gateway Timeout */
-        504: unknown;
-      };
-    };
-  };
-  "/complete": {
-    /** Weather forecasts for any location on earth */
-    get: {
-      parameters: {
-        query: {
-          /** Whole meters above sea level */
-          altitude?: number;
-          /** Latitude */
-          lat: number;
-          /** Longitude */
-          lon: number;
-        };
-      };
-      responses: {
-        /** Success */
-        200: {
-          schema: definitions["METJSONForecast"];
-        };
-        /** 204 No Content */
-        204: never;
-        /** 400 Bad Request */
-        400: unknown;
-        /** 401 Unauthorized */
-        401: unknown;
-        /** 403 Forbidden */
-        403: unknown;
-        /** 404 Not Found */
-        404: unknown;
-        /** 422 Unprocessable Entity */
-        422: unknown;
-        /** 429 Too Many Requests */
-        429: unknown;
-        /** 500 Internal Server Error */
-        500: unknown;
-        /** 502 Bad Gateway */
-        502: unknown;
-        /** 503 Service Unavailable */
-        503: unknown;
-        /** 504 Gateway Timeout */
-        504: unknown;
-      };
-    };
-  };
-  "/complete.{format}": {
+  '/compact.{format}': {
     /** Weather forecasts for any location on earth */
     get: {
       parameters: {
@@ -250,13 +160,13 @@ export interface paths {
         };
         path: {
           /** format code (file extension) */
-          format: "json";
+          format: 'json';
         };
       };
       responses: {
         /** Success */
         200: {
-          schema: definitions["METJSONForecast"];
+          schema: definitions['METJSONForecast'];
         };
         /** 204 No Content */
         204: never;
@@ -283,7 +193,97 @@ export interface paths {
       };
     };
   };
-  "/healthz": {
+  '/complete': {
+    /** Weather forecasts for any location on earth */
+    get: {
+      parameters: {
+        query: {
+          /** Whole meters above sea level */
+          altitude?: number;
+          /** Latitude */
+          lat: number;
+          /** Longitude */
+          lon: number;
+        };
+      };
+      responses: {
+        /** Success */
+        200: {
+          schema: definitions['METJSONForecast'];
+        };
+        /** 204 No Content */
+        204: never;
+        /** 400 Bad Request */
+        400: unknown;
+        /** 401 Unauthorized */
+        401: unknown;
+        /** 403 Forbidden */
+        403: unknown;
+        /** 404 Not Found */
+        404: unknown;
+        /** 422 Unprocessable Entity */
+        422: unknown;
+        /** 429 Too Many Requests */
+        429: unknown;
+        /** 500 Internal Server Error */
+        500: unknown;
+        /** 502 Bad Gateway */
+        502: unknown;
+        /** 503 Service Unavailable */
+        503: unknown;
+        /** 504 Gateway Timeout */
+        504: unknown;
+      };
+    };
+  };
+  '/complete.{format}': {
+    /** Weather forecasts for any location on earth */
+    get: {
+      parameters: {
+        query: {
+          /** Whole meters above sea level */
+          altitude?: number;
+          /** Latitude */
+          lat: number;
+          /** Longitude */
+          lon: number;
+        };
+        path: {
+          /** format code (file extension) */
+          format: 'json';
+        };
+      };
+      responses: {
+        /** Success */
+        200: {
+          schema: definitions['METJSONForecast'];
+        };
+        /** 204 No Content */
+        204: never;
+        /** 400 Bad Request */
+        400: unknown;
+        /** 401 Unauthorized */
+        401: unknown;
+        /** 403 Forbidden */
+        403: unknown;
+        /** 404 Not Found */
+        404: unknown;
+        /** 422 Unprocessable Entity */
+        422: unknown;
+        /** 429 Too Many Requests */
+        429: unknown;
+        /** 500 Internal Server Error */
+        500: unknown;
+        /** 502 Bad Gateway */
+        502: unknown;
+        /** 503 Service Unavailable */
+        503: unknown;
+        /** 504 Gateway Timeout */
+        504: unknown;
+      };
+    };
+  };
+  '/healthz': {
     /** Check health status for product */
     get: {
       responses: {
@@ -292,7 +292,7 @@ export interface paths {
       };
     };
   };
-  "/locations": {
+  '/locations': {
     /** List available locations as GeoJSON FeatureCollection */
     get: {
       responses: {
@@ -301,7 +301,7 @@ export interface paths {
       };
     };
   };
-  "/schema": {
+  '/schema': {
     /** Schema for XML data */
     get: {
       responses: {
@@ -310,7 +310,7 @@ export interface paths {
       };
     };
   };
-  "/status": {
+  '/status': {
     /** Weather forecasts for any location on earth */
     get: {
       parameters: {};
@@ -344,13 +344,13 @@ export interface paths {
       };
     };
   };
-  "/status.{format}": {
+  '/status.{format}': {
     /** Weather forecasts for any location on earth */
     get: {
       parameters: {
         path: {
           /** format code (file extension) */
-          format: "json";
+          format: 'json';
         };
       };
       responses: {
@@ -389,18 +389,18 @@ export interface definitions {
   /** Forecast timeseries */
   Forecast: {
     meta: {
-      units: definitions["ForecastUnits"];
+      units: definitions['ForecastUnits'];
       /**
        * @description Update time for this forecast
        * @example 2019-12-03T13:52:13Z
        */
       updated_at: string;
     };
-    timeseries: definitions["ForecastTimeStep"][];
+    timeseries: definitions['ForecastTimeStep'][];
   };
   /** @description Summary of weather conditions. */
   ForecastSummary: {
-    symbol_code: definitions["WeatherSymbol"];
+    symbol_code: definitions['WeatherSymbol'];
   };
   /** @description Weather parameters valid for a specific point in time. */
   ForecastTimeInstant: {
@@ -514,22 +514,22 @@ export interface definitions {
     data: {
       /** @description Parameters which applies to this exact point in time */
       instant: {
-        details?: definitions["ForecastTimeInstant"];
+        details?: definitions['ForecastTimeInstant'];
       };
       /** @description Parameters with validity times over twelve hours. Will not exist for all time steps. */
       next_12_hours?: {
-        details: definitions["ForecastTimePeriod"];
-        summary: definitions["ForecastSummary"];
+        details: definitions['ForecastTimePeriod'];
+        summary: definitions['ForecastSummary'];
       };
       /** @description Parameters with validity times over one hour. Will not exist for all time steps. */
       next_1_hours?: {
-        details: definitions["ForecastTimePeriod"];
-        summary: definitions["ForecastSummary"];
+        details: definitions['ForecastTimePeriod'];
+        summary: definitions['ForecastSummary'];
       };
       /** @description Parameters with validity times over six hours. Will not exist for all time steps. */
       next_6_hours?: {
-        details: definitions["ForecastTimePeriod"];
-        summary: definitions["ForecastSummary"];
+        details: definitions['ForecastTimePeriod'];
+        summary: definitions['ForecastSummary'];
       };
     };
     /**
@@ -582,13 +582,13 @@ export interface definitions {
   };
   /** GeoJSON Forecast Timeseries */
   METJSONForecast: {
-    geometry: definitions["PointGeometry"];
-    properties: definitions["Forecast"];
+    geometry: definitions['PointGeometry'];
+    properties: definitions['Forecast'];
     /**
      * @example Feature
      * @enum {string}
      */
-    type: "Feature";
+    type: 'Feature';
   };
   /** GeoJSON point type */
   PointGeometry: {
@@ -602,7 +602,7 @@ export interface definitions {
      */
     coordinates: number[];
     /** @enum {string} */
-    type: "Point";
+    type: 'Point';
   };
   /**
    * @description A identifier that sums up the weather condition for this time period, see documentation.
@@ -610,89 +610,89 @@ export interface definitions {
    * @enum {string}
    */
   WeatherSymbol:
-    | "clearsky_day"
-    | "clearsky_night"
-    | "clearsky_polartwilight"
-    | "fair_day"
-    | "fair_night"
-    | "fair_polartwilight"
-    | "lightssnowshowersandthunder_day"
-    | "lightssnowshowersandthunder_night"
-    | "lightssnowshowersandthunder_polartwilight"
-    | "lightsnowshowers_day"
-    | "lightsnowshowers_night"
-    | "lightsnowshowers_polartwilight"
-    | "heavyrainandthunder"
-    | "heavysnowandthunder"
-    | "rainandthunder"
-    | "heavysleetshowersandthunder_day"
-    | "heavysleetshowersandthunder_night"
-    | "heavysleetshowersandthunder_polartwilight"
-    | "heavysnow"
-    | "heavyrainshowers_day"
-    | "heavyrainshowers_night"
-    | "heavyrainshowers_polartwilight"
-    | "lightsleet"
-    | "heavyrain"
-    | "lightrainshowers_day"
-    | "lightrainshowers_night"
-    | "lightrainshowers_polartwilight"
-    | "heavysleetshowers_day"
-    | "heavysleetshowers_night"
-    | "heavysleetshowers_polartwilight"
-    | "lightsleetshowers_day"
-    | "lightsleetshowers_night"
-    | "lightsleetshowers_polartwilight"
-    | "snow"
-    | "heavyrainshowersandthunder_day"
-    | "heavyrainshowersandthunder_night"
-    | "heavyrainshowersandthunder_polartwilight"
-    | "snowshowers_day"
-    | "snowshowers_night"
-    | "snowshowers_polartwilight"
-    | "fog"
-    | "snowshowersandthunder_day"
-    | "snowshowersandthunder_night"
-    | "snowshowersandthunder_polartwilight"
-    | "lightsnowandthunder"
-    | "heavysleetandthunder"
-    | "lightrain"
-    | "rainshowersandthunder_day"
-    | "rainshowersandthunder_night"
-    | "rainshowersandthunder_polartwilight"
-    | "rain"
-    | "lightsnow"
-    | "lightrainshowersandthunder_day"
-    | "lightrainshowersandthunder_night"
-    | "lightrainshowersandthunder_polartwilight"
-    | "heavysleet"
-    | "sleetandthunder"
-    | "lightrainandthunder"
-    | "sleet"
-    | "lightssleetshowersandthunder_day"
-    | "lightssleetshowersandthunder_night"
-    | "lightssleetshowersandthunder_polartwilight"
-    | "lightsleetandthunder"
-    | "partlycloudy_day"
-    | "partlycloudy_night"
-    | "partlycloudy_polartwilight"
-    | "sleetshowersandthunder_day"
-    | "sleetshowersandthunder_night"
-    | "sleetshowersandthunder_polartwilight"
-    | "rainshowers_day"
-    | "rainshowers_night"
-    | "rainshowers_polartwilight"
-    | "snowandthunder"
-    | "sleetshowers_day"
-    | "sleetshowers_night"
-    | "sleetshowers_polartwilight"
-    | "cloudy"
-    | "heavysnowshowersandthunder_day"
-    | "heavysnowshowersandthunder_night"
-    | "heavysnowshowersandthunder_polartwilight"
-    | "heavysnowshowers_day"
-    | "heavysnowshowers_night"
-    | "heavysnowshowers_polartwilight";
+    | 'clearsky_day'
+    | 'clearsky_night'
+    | 'clearsky_polartwilight'
+    | 'fair_day'
+    | 'fair_night'
+    | 'fair_polartwilight'
+    | 'lightssnowshowersandthunder_day'
+    | 'lightssnowshowersandthunder_night'
+    | 'lightssnowshowersandthunder_polartwilight'
+    | 'lightsnowshowers_day'
+    | 'lightsnowshowers_night'
+    | 'lightsnowshowers_polartwilight'
+    | 'heavyrainandthunder'
+    | 'heavysnowandthunder'
+    | 'rainandthunder'
+    | 'heavysleetshowersandthunder_day'
+    | 'heavysleetshowersandthunder_night'
+    | 'heavysleetshowersandthunder_polartwilight'
+    | 'heavysnow'
+    | 'heavyrainshowers_day'
+    | 'heavyrainshowers_night'
+    | 'heavyrainshowers_polartwilight'
+    | 'lightsleet'
+    | 'heavyrain'
+    | 'lightrainshowers_day'
+    | 'lightrainshowers_night'
+    | 'lightrainshowers_polartwilight'
+    | 'heavysleetshowers_day'
+    | 'heavysleetshowers_night'
+    | 'heavysleetshowers_polartwilight'
+    | 'lightsleetshowers_day'
+    | 'lightsleetshowers_night'
+    | 'lightsleetshowers_polartwilight'
+    | 'snow'
+    | 'heavyrainshowersandthunder_day'
+    | 'heavyrainshowersandthunder_night'
+    | 'heavyrainshowersandthunder_polartwilight'
+    | 'snowshowers_day'
+    | 'snowshowers_night'
+    | 'snowshowers_polartwilight'
+    | 'fog'
+    | 'snowshowersandthunder_day'
+    | 'snowshowersandthunder_night'
+    | 'snowshowersandthunder_polartwilight'
+    | 'lightsnowandthunder'
+    | 'heavysleetandthunder'
+    | 'lightrain'
+    | 'rainshowersandthunder_day'
+    | 'rainshowersandthunder_night'
+    | 'rainshowersandthunder_polartwilight'
+    | 'rain'
+    | 'lightsnow'
+    | 'lightrainshowersandthunder_day'
+    | 'lightrainshowersandthunder_night'
+    | 'lightrainshowersandthunder_polartwilight'
+    | 'heavysleet'
+    | 'sleetandthunder'
+    | 'lightrainandthunder'
+    | 'sleet'
+    | 'lightssleetshowersandthunder_day'
+    | 'lightssleetshowersandthunder_night'
+    | 'lightssleetshowersandthunder_polartwilight'
+    | 'lightsleetandthunder'
+    | 'partlycloudy_day'
+    | 'partlycloudy_night'
+    | 'partlycloudy_polartwilight'
+    | 'sleetshowersandthunder_day'
+    | 'sleetshowersandthunder_night'
+    | 'sleetshowersandthunder_polartwilight'
+    | 'rainshowers_day'
+    | 'rainshowers_night'
+    | 'rainshowers_polartwilight'
+    | 'snowandthunder'
+    | 'sleetshowers_day'
+    | 'sleetshowers_night'
+    | 'sleetshowers_polartwilight'
+    | 'cloudy'
+    | 'heavysnowshowersandthunder_day'
+    | 'heavysnowshowersandthunder_night'
+    | 'heavysnowshowersandthunder_polartwilight'
+    | 'heavysnowshowers_day'
+    | 'heavysnowshowers_night'
+    | 'heavysnowshowers_polartwilight';
 }
 
 export interface operations {}

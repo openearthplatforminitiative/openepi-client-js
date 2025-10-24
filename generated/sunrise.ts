@@ -4,7 +4,7 @@
  */
 
 export interface paths {
-  "/changelog": {
+  '/changelog': {
     /** RSS feed of changes to this product */
     get: {
       responses: {
@@ -13,7 +13,7 @@ export interface paths {
       };
     };
   };
-  "/healthz": {
+  '/healthz': {
     /** Check health status for product */
     get: {
       responses: {
@@ -22,7 +22,7 @@ export interface paths {
       };
     };
   };
-  "/locations": {
+  '/locations': {
     /** List available locations as GeoJSON FeatureCollection */
     get: {
       responses: {
@@ -31,7 +31,7 @@ export interface paths {
       };
     };
   };
-  "/moon": {
+  '/moon': {
     /** Calculate sun or moon events, as seen from a specific location on Earth */
     get: {
       parameters: {
@@ -76,7 +76,7 @@ export interface paths {
       };
     };
   };
-  "/sun": {
+  '/sun': {
     /** Calculate sun or moon events, as seen from a specific location on Earth */
     get: {
       parameters: {
@@ -121,12 +121,12 @@ export interface paths {
       };
     };
   };
-  "/values": {
+  '/values': {
     /** List allowed options for parameters */
     get: {
       parameters: {
         query: {
-          param?: "type";
+          param?: 'type';
         };
       };
       responses: {
@@ -136,7 +136,7 @@ export interface paths {
     };
     parameters: {
       query: {
-        param?: "type";
+        param?: 'type';
       };
     };
   };
