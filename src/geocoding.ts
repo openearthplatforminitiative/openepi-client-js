@@ -7,20 +7,18 @@ import createClient from 'openapi-fetch';
 export default class GeocoderClient {
   /**
    * Creates an instance of GeocoderClient.
-   * @param {string} [baseUrl='https://api.openepi.io/geocoding'] - The base URL for the geocoding API.
+   * @param {string} [baseUrl='https://photon.komoot.io'] - The base URL for the geocoding API.
    */
-  constructor(
-    private readonly baseUrl: string = 'https://api.openepi.io/geocoding'
-  ) {}
+  constructor(private readonly baseUrl: string = 'https://photon.komoot.io') {}
 
   /**
    * Gets geocoding data from the geocoding API.
-   * @param {paths['/']['get']['parameters']['query']} query - The query parameters for the geocoding request.
+   * @param {paths['/api']['get']['parameters']['query']} query - The query parameters for the geocoding request.
    * @returns {Promise<FetchResponse>} The response from the geocoding endpoint.
    */
-  async getGeocoding(query: paths['/']['get']['parameters']['query']) {
+  async getGeocoding(query: paths['/api']['get']['parameters']['query']) {
     const { GET } = createClient<paths>({ baseUrl: this.baseUrl });
-    return GET('/', { params: { query } });
+    return GET('/api', { params: { query } });
   }
 
   /**
